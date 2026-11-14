@@ -18,4 +18,4 @@ The App Store metadata and screenshots are stored under `AppStore/`.
 
 ## Screenshot
 
-![Spy Pass discussion screen](AppStore/screenshots/iphone-6.9/05-start-talking.png)
+![Spy Pass discussion screen](AppStore/screenshots/iphone-6.3-required/05-start-talking.png)

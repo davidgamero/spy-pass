@@ -9,6 +9,9 @@ build/
 *.xcarchive
 *.ipa
 AppStore/build/
+*.p8
+.env
+fastlane/.env
 
 # Swift Package Manager
 .build/

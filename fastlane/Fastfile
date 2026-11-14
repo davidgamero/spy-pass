@@ -1,0 +1,55 @@
+require "fileutils"
+require "tmpdir"
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Upload App Store metadata and required screenshots"
+  lane :upload_store_assets do
+    %w[ASC_KEY_ID ASC_ISSUER_ID ASC_KEY_FILEPATH].each do |name|
+      UI.user_error!("Missing #{name} in fastlane/.env") if ENV[name].to_s.empty?
+    end
+
+    api_key = app_store_connect_api_key(
+      key_id: ENV["ASC_KEY_ID"],
+      issuer_id: ENV["ASC_ISSUER_ID"],
+      key_filepath: File.expand_path(ENV["ASC_KEY_FILEPATH"]),
+      duration: 1200,
+      in_house: false
+    )
+
+    repository = File.expand_path("..", __dir__)
+    staging = File.join(Dir.tmpdir, "spy-pass-app-store-screenshots")
+    locale = File.join(staging, "en-US")
+    FileUtils.rm_rf(staging)
+    FileUtils.mkdir_p(locale)
+
+    {
+      "iphone-6.3" => "AppStore/screenshots/iphone-6.3-required/*.png",
+      "ipad-13" => "AppStore/screenshots/ipad-13/*.png"
+    }.each do |prefix, pattern|
+      Dir[File.join(repository, pattern)].sort.each do |source|
+        destination = File.join(locale, "#{prefix}-#{File.basename(source)}")
+        FileUtils.cp(source, destination)
+      end
+    end
+
+    deliver(
+      api_key: api_key,
+      app_identifier: "com.david340805.SpyPass",
+      app_version: "1.0",
+      platform: "ios",
+      metadata_path: File.join(repository, "AppStore/metadata"),
+      screenshots_path: staging,
+      skip_binary_upload: true,
+      skip_metadata: false,
+      skip_screenshots: false,
+      overwrite_screenshots: true,
+      submit_for_review: false,
+      run_precheck_before_submit: false,
+      force: true
+    )
+  ensure
+    FileUtils.rm_rf(staging) if defined?(staging) && staging
+  end
+end

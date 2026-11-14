@@ -21,3 +21,9 @@ Screenshot state seeding is compiled only in Debug builds. Launch a Debug build 
 Capture one simulator at a time. Shut down the current simulator before booting a different device.
 
 Compact front-screen audit captures and findings are stored in `../ui-audit/iphone-duo-front/`.
+
+## App Store Connect upload sets
+
+- `iphone-6.3-required/`: required iPhone set, 1206 × 2622, RGB PNG without alpha
+- `ipad-13/`: required iPad set, 2064 × 2752, RGB PNG without alpha
+- `iphone-6.9-optional/`: optional large-display set; do not upload it into the required 6.3-inch slot
