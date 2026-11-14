@@ -19,3 +19,5 @@ Screenshot state seeding is compiled only in Debug builds. Launch a Debug build 
 ```
 
 Capture one simulator at a time. Shut down the current simulator before booting a different device.
+
+Compact front-screen audit captures and findings are stored in `../ui-audit/iphone-duo-front/`.

@@ -8,6 +8,12 @@ struct DealView: View {
     private var isSpy: Bool { model.state.current == model.state.spyIndex }
 
     var body: some View {
+        GeometryReader { geometry in
+            dealLayout(cardWidth: geometry.size.height < 760 ? 270 : 380)
+        }
+    }
+
+    private func dealLayout(cardWidth: CGFloat) -> some View {
         VStack(spacing: 0) {
             HStack {
                 Eyebrow(text: "Player \(playerNumber) of \(model.playerCount)", color: AppTheme.paper)
@@ -24,9 +30,9 @@ struct DealView: View {
             ScrollView {
                 VStack(spacing: 22) {
                     if model.state.revealed {
-                        revealedContent
+                        revealedContent(cardWidth: cardWidth)
                     } else {
-                        waitingContent
+                        waitingContent(cardWidth: cardWidth)
                     }
                 }
                 .frame(maxWidth: 480)
@@ -38,7 +44,7 @@ struct DealView: View {
         }
     }
 
-    private var waitingContent: some View {
+    private func waitingContent(cardWidth: CGFloat) -> some View {
         Group {
             Text(playerNumber == 1 ? "Player 1 starts." : "Pass the phone to\nthe next person.")
                 .displayTitle(size: 35)
@@ -46,7 +52,12 @@ struct DealView: View {
                 .lineSpacing(-2)
 
             Button(action: model.showCard) {
-                HiddenCardView(playerNumber: playerNumber, playerName: player.name, color: player.color)
+                HiddenCardView(
+                    playerNumber: playerNumber,
+                    playerName: player.name,
+                    color: player.color,
+                    maxWidth: cardWidth
+                )
             }
                 .buttonStyle(.plain)
                 .accessibilityElement(children: .ignore)
@@ -71,7 +82,7 @@ struct DealView: View {
         }
     }
 
-    private var revealedContent: some View {
+    private func revealedContent(cardWidth: CGFloat) -> some View {
         Group {
             if isSpy {
                 Text("You are the \(Text("spy.").foregroundStyle(AppTheme.red))")
@@ -88,7 +99,8 @@ struct DealView: View {
                     playerName: player.name,
                     color: player.color,
                     secret: model.state.secret,
-                    isSpy: isSpy
+                    isSpy: isSpy,
+                    maxWidth: cardWidth
                 )
             }
             .buttonStyle(.plain)
@@ -108,6 +120,7 @@ private struct HiddenCardView: View {
     let playerNumber: Int
     let playerName: String
     let color: Color
+    let maxWidth: CGFloat
 
     var body: some View {
         VStack(spacing: 0) {
@@ -136,8 +149,7 @@ private struct HiddenCardView: View {
         }
         .foregroundStyle(AppTheme.paperInk)
         .padding(18)
-        .frame(maxWidth: 380)
-        .aspectRatio(4 / 5, contentMode: .fit)
+        .frame(width: maxWidth, height: maxWidth * 1.25)
         .background(color)
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
     }
@@ -157,6 +169,7 @@ private struct RevealedCardView: View {
     let color: Color
     let secret: String
     let isSpy: Bool
+    let maxWidth: CGFloat
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var countdown: CGFloat = 1
@@ -207,8 +220,7 @@ private struct RevealedCardView: View {
         }
         .foregroundStyle(AppTheme.paperInk)
         .padding(18)
-        .frame(maxWidth: 380)
-        .aspectRatio(4 / 5, contentMode: .fit)
+        .frame(width: maxWidth, height: maxWidth * 1.25)
         .background(color)
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         .onAppear {

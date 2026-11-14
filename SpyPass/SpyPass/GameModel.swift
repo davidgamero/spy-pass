@@ -166,6 +166,8 @@ final class GameModel: ObservableObject {
         state.showAnswer = false
 
         switch arguments[flagIndex + 1] {
+        case "setup-empty":
+            state = GameState()
         case "setup":
             state.phase = .setup
         case "hidden":
@@ -180,6 +182,9 @@ final class GameModel: ObservableObject {
             state.revealed = true
         case "discussion":
             state.phase = .done
+        case "answer":
+            state.phase = .done
+            state.showAnswer = true
         default:
             state = GameState()
         }

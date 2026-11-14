@@ -2,46 +2,63 @@ import SwiftUI
 
 struct DoneView: View {
     @ObservedObject var model: GameModel
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 24) {
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("Start talking.")
-                        .displayTitle(size: 48)
-                    Text("Take turns giving clues about the name without saying it. Find the spy before the spy works out the name.")
-                        .font(.body)
-                        .foregroundStyle(AppTheme.muted)
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-
-                namesInPlay
-
-                if model.state.showAnswer {
-                    answerPanel
-                        .transition(.opacity.combined(with: .move(edge: .top)))
-                } else {
-                    Button("Reveal the answer") {
-                        withAnimation { model.revealAnswer() }
+        ScrollViewReader { proxy in
+            ScrollView {
+                VStack(alignment: .leading, spacing: 24) {
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("Start talking.")
+                            .displayTitle(size: 48)
+                        Text("Take turns giving clues about the name without saying it. Find the spy before the spy works out the name.")
+                            .font(.body)
+                            .foregroundStyle(AppTheme.muted)
+                            .fixedSize(horizontal: false, vertical: true)
                     }
-                    .buttonStyle(FilledButtonStyle(fill: AppTheme.paper, foreground: AppTheme.paperInk))
-                }
 
-                VStack(spacing: 12) {
-                    Button("Deal again with the same names", action: model.deal)
-                        .buttonStyle(FilledButtonStyle(fill: AppTheme.red, foreground: .white))
-                    Button("Change names", action: model.changeNames)
-                        .buttonStyle(FilledButtonStyle(fill: AppTheme.panel, foreground: AppTheme.paper))
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 10, style: .continuous)
-                                .stroke(AppTheme.line, lineWidth: 1)
+                    namesInPlay
+
+                    if model.state.showAnswer {
+                        answerPanel
+                            .id("answer-panel")
+                            .transition(.opacity.combined(with: .move(edge: .top)))
+                    } else {
+                        Button("Reveal the answer") {
+                            withAnimation(reduceMotion ? nil : .default) {
+                                model.revealAnswer()
+                            }
                         }
+                        .buttonStyle(FilledButtonStyle(fill: AppTheme.paper, foreground: AppTheme.paperInk))
+                    }
+
+                    VStack(spacing: 12) {
+                        Button("Deal again with the same names", action: model.deal)
+                            .buttonStyle(FilledButtonStyle(fill: AppTheme.red, foreground: .white))
+                        Button("Change names", action: model.changeNames)
+                            .buttonStyle(FilledButtonStyle(fill: AppTheme.panel, foreground: AppTheme.paper))
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                    .stroke(AppTheme.line, lineWidth: 1)
+                            }
+                    }
+                }
+                .frame(maxWidth: 480)
+                .padding(.horizontal, 20)
+                .padding(.vertical, 30)
+                .frame(maxWidth: .infinity)
+            }
+            .onChange(of: model.state.showAnswer) { _, isVisible in
+                guard isVisible else { return }
+                withAnimation(reduceMotion ? nil : .easeOut) {
+                    proxy.scrollTo("answer-panel", anchor: .center)
                 }
             }
-            .frame(maxWidth: 480)
-            .padding(.horizontal, 20)
-            .padding(.vertical, 30)
-            .frame(maxWidth: .infinity)
+            .task {
+                guard model.state.showAnswer else { return }
+                await Task.yield()
+                proxy.scrollTo("answer-panel", anchor: .center)
+            }
         }
     }
 
