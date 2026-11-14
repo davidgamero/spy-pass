@@ -8,6 +8,9 @@
 - Privacy disclosure draft stating that the app collects no data
 - Public support and privacy pages under `docs/`
 - Version 1.0, build 1
+- iOS 17.0 minimum deployment target
+- iPhone and iPad support
+- Games category and 2026 copyright metadata
 
 ## App Store Connect details still needed
 
@@ -24,8 +27,8 @@
 - Create the App Store Connect app using bundle ID `com.david340805.SpyPass`
 - Upload the archive, attach the prepared screenshots, and submit for review
 
-## Release blockers to resolve before archiving
+## Release build
 
-- Lower the current iOS deployment target from 27.2 to the oldest iOS version the app will support
-- Confirm whether the release should support both iPhone and iPad; iPad support requires its own screenshot set
-- Set a final copyright string in the target settings
+- Release archive created at `AppStore/build/SpyPass-1.0-1.xcarchive`
+- Distribution-signed IPA exported to `AppStore/build/SpyPass-1.0-1.ipa`
+- Upload the exported package through Xcode Organizer or Transporter
