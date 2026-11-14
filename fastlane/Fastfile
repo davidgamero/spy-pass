@@ -52,4 +52,9 @@ platform :ios do
   ensure
     FileUtils.rm_rf(staging) if defined?(staging) && staging
   end
+
+  desc "Upload and place product-page header and search creative assets"
+  lane :upload_creative_assets do
+    sh("python3", File.expand_path("upload_creative_assets.py", __dir__))
+  end
 end

@@ -233,6 +233,8 @@ def main() -> None:
 
     create_header(OUTPUT / "spy-pass-header-2400x1200.png", (2400, 1200))
     create_header(OUTPUT / "spy-pass-social-1200x1200.png", (1200, 1200))
+    create_header(OUTPUT / "app-store-product-header-3840x1646.png", (3840, 1646))
+    create_header(OUTPUT / "app-store-search-2400x1600.png", (2400, 1600))
 
 
 if __name__ == "__main__":

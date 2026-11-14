@@ -11,6 +11,8 @@ Each screenshot combines a short gameplay explanation with the real app interfac
 
 - `spy-pass-header-2400x1200.png`: wide website, press, and social header
 - `spy-pass-social-1200x1200.png`: square social post
+- `app-store-product-header-3840x1646.png`: App Store product-page header at 21:9
+- `app-store-search-2400x1600.png`: App Store search-results creative at 3:2
 
 ## Regenerate
 
@@ -21,3 +23,9 @@ python3 AppStore/marketing/generate_marketing_assets.py
 ```
 
 The generator reads the raw screenshots under `AppStore/screenshots/` and the app icon from the asset catalog.
+
+Upload and place the App Store creative assets with:
+
+```sh
+fastlane ios upload_creative_assets
+```

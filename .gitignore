@@ -13,6 +13,8 @@ AppStore/build/
 .env
 fastlane/.env
 fastlane/report.xml
+__pycache__/
+*.pyc
 
 # Swift Package Manager
 .build/
