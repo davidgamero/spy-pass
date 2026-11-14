@@ -1,0 +1,15 @@
+Spy Pass is a pass-the-phone party game for three or more players.
+
+Add the names of people everyone in the group knows. Spy Pass picks one name for the round and secretly assigns one player as the spy. Everyone else sees the same name. The spy sees only their role.
+
+Pass the phone around so each player can view their card. Cards hide after a few seconds to keep the round private. Once everyone has seen their card, start giving clues and work out who never saw the name.
+
+HOW TO PLAY
+
+1. Add one name for each player.
+2. Deal the cards and pass the phone around.
+3. Give clues without saying the name.
+4. Vote on who you think the spy is.
+5. Reveal the spy and the secret name.
+
+Spy Pass works on one device. It needs no account or internet connection and collects no personal data.

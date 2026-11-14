@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+
+# Xcode user state and build products
+xcuserdata/
+*.xcuserstate
+DerivedData/
+build/
+*.xcarchive
+*.ipa
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# Downloaded Impeccable runtime binary
+.opencode/skills/impeccable/scripts/bin/

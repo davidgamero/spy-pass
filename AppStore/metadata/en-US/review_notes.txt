@@ -1,0 +1,7 @@
+Spy Pass is a local pass-the-phone game. It requires no login or network connection.
+
+To review the complete flow:
+1. Add at least three names.
+2. Tap "Deal to 3 players."
+3. Reveal each player's card and wait for it to hide, or tap the card to continue.
+4. On the discussion screen, tap "Reveal the answer."

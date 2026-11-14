@@ -1,0 +1,1 @@
+Initial release of Spy Pass. Add names, deal private cards, find the spy, and reveal the answer after the round.
