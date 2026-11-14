@@ -22,6 +22,8 @@ Capture one simulator at a time. Shut down the current simulator before booting 
 
 Compact front-screen audit captures and findings are stored in `../ui-audit/iphone-duo-front/`.
 
+Polished App Store and promotional artwork is stored in `../marketing/`.
+
 ## App Store Connect upload sets
 
 - `iphone-6.3-required/`: required iPhone set, 1206 × 2622, RGB PNG without alpha

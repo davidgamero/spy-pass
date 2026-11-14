@@ -12,6 +12,7 @@ AppStore/build/
 *.p8
 .env
 fastlane/.env
+fastlane/report.xml
 
 # Swift Package Manager
 .build/

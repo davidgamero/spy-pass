@@ -25,8 +25,8 @@ platform :ios do
     FileUtils.mkdir_p(locale)
 
     {
-      "iphone-6.3" => "AppStore/screenshots/iphone-6.3-required/*.png",
-      "ipad-13" => "AppStore/screenshots/ipad-13/*.png"
+      "iphone-6.3" => "AppStore/marketing/app-store-iphone-6.3/*.png",
+      "ipad-13" => "AppStore/marketing/app-store-ipad-13/*.png"
     }.each do |prefix, pattern|
       Dir[File.join(repository, pattern)].sort.each do |source|
         destination = File.join(locale, "#{prefix}-#{File.basename(source)}")
