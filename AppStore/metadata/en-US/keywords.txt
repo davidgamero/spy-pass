@@ -1,1 +1,1 @@
-party game,spy game,pass the phone,friends,group game,offline game,icebreaker,guessing game
+spy,impostor,pass the phone,friends,group,icebreaker,guessing,social,deduction,no wifi

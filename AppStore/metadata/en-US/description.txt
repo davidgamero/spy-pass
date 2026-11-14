@@ -1,4 +1,4 @@
-Spy Pass is a pass-the-phone party game for three or more players.
+Spy Pass is an offline pass-the-phone party game for three or more players. The whole game runs on one phone, with no account or internet connection.
 
 Add the names of people everyone in the group knows. Spy Pass picks one name for the round and secretly assigns one player as the spy. Everyone else sees the same name. The spy sees only their role.
 
@@ -12,4 +12,4 @@ HOW TO PLAY
 4. Vote on who you think the spy is.
 5. Reveal the spy and the secret name.
 
-Spy Pass works on one device. It needs no account or internet connection and collects no personal data.
+Spy Pass collects no personal data.

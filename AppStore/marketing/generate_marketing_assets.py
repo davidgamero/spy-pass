@@ -20,7 +20,7 @@ DISPLAY_FONT = "/System/Library/Fonts/Supplemental/Arial Rounded Bold.ttf"
 BODY_FONT = "/System/Library/Fonts/SFNS.ttf"
 
 SLIDES = [
-    ("01-setup.png", "ADD NAMES EVERYONE KNOWS", "#FF7A66"),
+    ("01-setup.png", "PLAY OFFLINE ON ONE PHONE", "#FF7A66"),
     ("02-hidden-card.png", "PASS THE PHONE", "#5DB7FF"),
     ("03-secret-name.png", "REMEMBER THE NAME", "#B5E04A"),
     ("04-spy-role.png", "ONE PLAYER IS THE SPY", "#FFB938"),
@@ -160,7 +160,7 @@ def create_header(destination: Path, size: tuple[int, int]) -> None:
         draw.text((size[0] * 0.07, size[1] * 0.20), "SPY PASS.", font=title_font, fill=PAPER)
         draw.text(
             (size[0] * 0.075, size[1] * 0.52),
-            "Pass the phone. Find the spy.",
+            "One phone. No internet. Find the spy.",
             font=tagline_font,
             fill=MUTED,
         )
@@ -187,7 +187,7 @@ def create_header(destination: Path, size: tuple[int, int]) -> None:
         icon_x = (size[0] - icon_size) // 2
         icon_y = round(size[1] * 0.25)
         place_with_shadow(canvas, icon, (icon_x, icon_y), radius=26, shadow_offset=18)
-        tagline = "Pass the phone. Find the spy."
+        tagline = "One phone. No internet. Find the spy."
         tagline_box = draw.textbbox((0, 0), tagline, font=tagline_font)
         draw.text(
             ((size[0] - tagline_box[2]) / 2, size[1] * 0.86),
