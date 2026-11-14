@@ -42,3 +42,4 @@
 - iPhone Duo inner marketing screenshots prepared at 2007 × 2853
 - Product-page header and search creative uploaded to Asset Library
 - Version 1.1 metadata, Duo screenshots, and creative placements must be uploaded after version 1.0 leaves review and version 1.1 becomes editable
+- Run `fastlane ios prepare_1_1` after version 1.0 leaves review to create 1.1, attach build 2, upload all metadata and screenshots, and place the creative assets

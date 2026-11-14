@@ -40,6 +40,7 @@ platform :ios do
       api_key: api_key,
       app_identifier: "com.david340805.SpyPass",
       app_version: ENV.fetch("APP_VERSION", "1.1"),
+      build_number: ENV.fetch("BUILD_NUMBER", "2"),
       platform: "ios",
       metadata_path: File.join(repository, "AppStore/metadata"),
       screenshots_path: staging,
@@ -48,6 +49,7 @@ platform :ios do
       skip_screenshots: false,
       overwrite_screenshots: true,
       submit_for_review: false,
+      automatic_release: false,
       run_precheck_before_submit: false,
       force: true
     )
@@ -76,5 +78,11 @@ platform :ios do
       skip_waiting_for_build_processing: true,
       distribute_external: false
     )
+  end
+
+  desc "Create and fully prepare the 1.1 App Store version after 1.0 leaves review"
+  lane :prepare_1_1 do
+    upload_store_assets
+    upload_creative_assets
   end
 end
