@@ -23,21 +23,36 @@ final class SpyPassUITests: XCTestCase {
     }
 
     @MainActor
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    func testTutorialCanCompleteSkipAndReopen() throws {
         let app = XCUIApplication()
+        app.launchArguments = ["--show-tutorial"]
         app.launch()
 
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // XCUIAutomation Documentation
-        // https://developer.apple.com/documentation/xcuiautomation
+        XCTAssertTrue(app.otherElements["tutorial-screen"].waitForExistence(timeout: 3))
+
+        let next = app.buttons["tutorial-next"]
+        XCTAssertTrue(next.exists)
+        next.tap()
+        next.tap()
+        next.tap()
+        XCTAssertEqual(next.label, "Start playing")
+        next.tap()
+
+        let howToPlay = app.buttons["how-to-play"]
+        XCTAssertTrue(howToPlay.waitForExistence(timeout: 3))
+        howToPlay.tap()
+        XCTAssertTrue(app.otherElements["tutorial-screen"].waitForExistence(timeout: 3))
+        app.buttons["tutorial-skip"].tap()
+        XCTAssertTrue(howToPlay.waitForExistence(timeout: 3))
     }
 
     @MainActor
     func testLaunchPerformance() throws {
         // This measures how long it takes to launch your application.
         measure(metrics: [XCTApplicationLaunchMetric()]) {
-            XCUIApplication().launch()
+            let app = XCUIApplication()
+            app.launchArguments = ["--skip-tutorial"]
+            app.launch()
         }
     }
 }

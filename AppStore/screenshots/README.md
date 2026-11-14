@@ -29,3 +29,6 @@ Polished App Store and promotional artwork is stored in `../marketing/`.
 - `iphone-6.3-required/`: required iPhone set, 1206 × 2622, RGB PNG without alpha
 - `ipad-13/`: required iPad set, 2064 × 2752, RGB PNG without alpha
 - `iphone-6.9-optional/`: optional large-display set; do not upload it into the required 6.3-inch slot
+- `iphone-duo-outer-1.1/`: version 1.1 raw Duo outer-display captures, 1398 × 2034
+
+Polished Duo sets are stored under `../marketing/app-store-iphone-duo-outer/` and `../marketing/app-store-iphone-duo-inner/`.

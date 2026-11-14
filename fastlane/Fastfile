@@ -26,7 +26,9 @@ platform :ios do
 
     {
       "iphone-6.3" => "AppStore/marketing/app-store-iphone-6.3/*.png",
-      "ipad-13" => "AppStore/marketing/app-store-ipad-13/*.png"
+      "ipad-13" => "AppStore/marketing/app-store-ipad-13/*.png",
+      "iphone-duo-outer" => "AppStore/marketing/app-store-iphone-duo-outer/*.png",
+      "iphone-duo-inner" => "AppStore/marketing/app-store-iphone-duo-inner/*.png"
     }.each do |prefix, pattern|
       Dir[File.join(repository, pattern)].sort.each do |source|
         destination = File.join(locale, "#{prefix}-#{File.basename(source)}")
@@ -37,7 +39,7 @@ platform :ios do
     deliver(
       api_key: api_key,
       app_identifier: "com.david340805.SpyPass",
-      app_version: "1.0",
+      app_version: ENV.fetch("APP_VERSION", "1.1"),
       platform: "ios",
       metadata_path: File.join(repository, "AppStore/metadata"),
       screenshots_path: staging,
@@ -56,5 +58,23 @@ platform :ios do
   desc "Upload and place product-page header and search creative assets"
   lane :upload_creative_assets do
     sh("python3", File.expand_path("upload_creative_assets.py", __dir__))
+  end
+
+  desc "Upload the prepared 1.1 build to App Store Connect and TestFlight"
+  lane :upload_build_1_1 do
+    api_key = app_store_connect_api_key(
+      key_id: ENV["ASC_KEY_ID"],
+      issuer_id: ENV["ASC_ISSUER_ID"],
+      key_filepath: File.expand_path(ENV["ASC_KEY_FILEPATH"]),
+      duration: 1200,
+      in_house: false
+    )
+
+    upload_to_testflight(
+      api_key: api_key,
+      ipa: File.expand_path("../AppStore/build/SpyPass-1.1-2.ipa", __dir__),
+      skip_waiting_for_build_processing: true,
+      distribute_external: false
+    )
   end
 end

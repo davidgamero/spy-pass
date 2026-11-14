@@ -1,1 +1,1 @@
-Initial release of Spy Pass. Add names, deal private cards, find the spy, and reveal the answer after the round.
+Added a short, optional How to Play tutorial with clue examples, role guidance, and voting rules. Improved compact layouts and prepared dedicated iPhone Duo outer and inner display support.

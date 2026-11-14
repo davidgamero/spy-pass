@@ -4,6 +4,8 @@
 
 - `app-store-iphone-6.3/`: 1206 × 2622, required iPhone slot
 - `app-store-ipad-13/`: 2064 × 2752, required iPad slot
+- `app-store-iphone-duo-outer/`: 1398 × 2034, Duo outer display
+- `app-store-iphone-duo-inner/`: 2007 × 2853, Duo inner display
 
 Each screenshot combines a short gameplay explanation with the real app interface. All files are RGB PNG images without alpha channels.
 

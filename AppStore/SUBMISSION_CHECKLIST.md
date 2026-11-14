@@ -32,3 +32,13 @@
 - Release archive created at `AppStore/build/SpyPass-1.0-1.xcarchive`
 - Distribution-signed IPA exported to `AppStore/build/SpyPass-1.0-1.ipa`
 - Upload the exported package through Xcode Organizer or Transporter
+
+## Version 1.1 preparation
+
+- Tutorial implemented and verified with unit and UI tests
+- Version 1.1 build 2 exported to `AppStore/build/SpyPass-1.1-2.ipa`
+- Build 2 uploaded successfully to App Store Connect and TestFlight for processing
+- iPhone Duo outer marketing screenshots prepared at 1398 × 2034
+- iPhone Duo inner marketing screenshots prepared at 2007 × 2853
+- Product-page header and search creative uploaded to Asset Library
+- Version 1.1 metadata, Duo screenshots, and creative placements must be uploaded after version 1.0 leaves review and version 1.1 becomes editable

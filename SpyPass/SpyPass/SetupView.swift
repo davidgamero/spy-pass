@@ -2,6 +2,7 @@ import SwiftUI
 
 struct SetupView: View {
     @ObservedObject var model: GameModel
+    let onShowTutorial: () -> Void
     @State private var input = ""
     @FocusState private var inputFocused: Bool
 
@@ -47,6 +48,14 @@ struct SetupView: View {
                 .font(.body)
                 .foregroundStyle(AppTheme.muted)
                 .fixedSize(horizontal: false, vertical: true)
+            Button(action: onShowTutorial) {
+                Label("How to play", systemImage: "questionmark.circle")
+                    .font(.subheadline.weight(.bold))
+                    .frame(minHeight: 44)
+            }
+            .buttonStyle(.plain)
+            .foregroundStyle(AppTheme.paper)
+            .accessibilityIdentifier("how-to-play")
         }
     }
 

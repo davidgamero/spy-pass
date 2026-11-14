@@ -17,7 +17,7 @@ REPOSITORY = Path(__file__).resolve().parents[1]
 ENV_FILE = Path(__file__).resolve().parent / ".env"
 API_ROOT = "https://api.appstoreconnect.apple.com"
 BUNDLE_ID = "com.david340805.SpyPass"
-VERSION = "1.0"
+VERSION = "1.1"
 LOCALE = "en-US"
 
 ASSETS = [

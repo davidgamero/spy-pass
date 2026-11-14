@@ -31,6 +31,14 @@ Upload App Store metadata and required screenshots
 
 Upload and place product-page header and search creative assets
 
+### ios upload_build_1_1
+
+```sh
+[bundle exec] fastlane ios upload_build_1_1
+```
+
+Upload the prepared 1.1 build to App Store Connect and TestFlight
+
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.

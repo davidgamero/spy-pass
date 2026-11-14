@@ -7,6 +7,7 @@ ROOT = Path(__file__).resolve().parents[2]
 OUTPUT = Path(__file__).resolve().parent
 IPHONE_SOURCE = ROOT / "AppStore/screenshots/iphone-6.3-required"
 IPAD_SOURCE = ROOT / "AppStore/screenshots/ipad-13"
+DUO_OUTER_SOURCE = ROOT / "AppStore/screenshots/iphone-duo-outer-1.1"
 ICON_SOURCE = ROOT / "SpyPass/SpyPass/Assets.xcassets/AppIcon.appiconset/AppIcon.png"
 
 INK = "#0E1116"
@@ -206,8 +207,12 @@ def create_header(destination: Path, size: tuple[int, int]) -> None:
 def main() -> None:
     iphone_output = OUTPUT / "app-store-iphone-6.3"
     ipad_output = OUTPUT / "app-store-ipad-13"
+    duo_outer_output = OUTPUT / "app-store-iphone-duo-outer"
+    duo_inner_output = OUTPUT / "app-store-iphone-duo-inner"
     iphone_output.mkdir(parents=True, exist_ok=True)
     ipad_output.mkdir(parents=True, exist_ok=True)
+    duo_outer_output.mkdir(parents=True, exist_ok=True)
+    duo_inner_output.mkdir(parents=True, exist_ok=True)
 
     for filename, headline, accent in SLIDES:
         create_store_slide(
@@ -229,6 +234,26 @@ def main() -> None:
             screenshot_width=1600,
             screenshot_y=550,
             headline_size=128,
+        )
+        create_store_slide(
+            DUO_OUTER_SOURCE / filename,
+            duo_outer_output / filename,
+            headline,
+            accent,
+            canvas_size=(1398, 2034),
+            screenshot_width=1080,
+            screenshot_y=330,
+            headline_size=82,
+        )
+        create_store_slide(
+            IPHONE_SOURCE / filename,
+            duo_inner_output / filename,
+            headline,
+            accent,
+            canvas_size=(2007, 2853),
+            screenshot_width=1040,
+            screenshot_y=500,
+            headline_size=118,
         )
 
     create_header(OUTPUT / "spy-pass-header-2400x1200.png", (2400, 1200))

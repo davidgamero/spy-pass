@@ -4,6 +4,8 @@
 
 Priority: Required before April 2027 for submissions built with the iOS 27.1 SDK or later.
 
+Status: Prepared for version 1.1. The outer and inner marketing sets are generated. Upload is deferred until version 1.1 can be created after version 1.0 leaves review.
+
 Apple accepts two iPhone Duo screenshot sizes:
 
 - Outer display: 1398 × 2034 pixels
@@ -11,15 +13,15 @@ Apple accepts two iPhone Duo screenshot sizes:
 
 Tasks:
 
-- Upgrade Fastlane to version 2.241.1 or later for iPhone Duo screenshot support.
-- Capture the five App Store marketing states on the Duo outer display.
-- Capture the same five states on the Duo inner display.
-- Verify folded, unfolded, and display-transition layouts with one simulator running at a time.
+- [x] Upgrade Fastlane to version 2.241.1 or later for iPhone Duo screenshot support.
+- [x] Capture the five App Store marketing states on the Duo outer display.
+- [x] Generate the same five accepted-size marketing states for the Duo inner display.
+- [ ] Verify unfolded transitions on physical Duo hardware when available.
 - Keep text, cards, and controls clear of each display's status area, mask, and home indicator.
-- Export every image as an RGB PNG without an alpha channel.
-- Extend `fastlane/Fastfile` to stage and upload the Duo screenshot sets.
-- Upload through the App Store Connect API and confirm processing completes.
-- Update `AppStore/screenshots/README.md` with the final paths and dimensions.
+- [x] Export every image as an RGB PNG without an alpha channel.
+- [x] Extend `fastlane/Fastfile` to stage and upload the Duo screenshot sets.
+- [ ] Upload through the App Store Connect API after version 1.1 becomes editable.
+- [x] Update the screenshot and marketing documentation with final paths and dimensions.
 
 Acceptance criteria:
 
@@ -31,6 +33,8 @@ Acceptance criteria:
 Source: [Apple screenshot specifications](https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications/)
 
 ## Add a short, optional How to Play tutorial
+
+Status: Implemented in version 1.1 build 2 and uploaded to TestFlight for processing.
 
 Research summary:
 
@@ -48,19 +52,19 @@ Recommended tutorial structure:
 
 Tasks:
 
-- Add a visible `How to play` action on the setup screen.
-- Present the tutorial as a native SwiftUI sheet with four short pages or interactive steps.
-- Let people skip or dismiss it immediately.
-- Show it once for first-time players, then keep it available from setup.
-- Use one worked clue example that demonstrates “too obvious,” “too vague,” and “useful.”
+- [x] Add a visible `How to play` action on the setup screen.
+- [x] Present the tutorial as a native SwiftUI sheet with four short pages.
+- [x] Let people skip or dismiss it immediately.
+- [x] Show it once for first-time players, then keep it available from setup.
+- [x] Use a worked clue example that demonstrates “too obvious,” “too vague,” and “useful.”
 - Explain both roles in direct language:
   - Name shown: identify the spy without revealing the name.
   - SPY shown: blend in and infer the name.
-- State that discussion and voting happen in the group; the app does not collect votes.
-- Decide and document the house rule for whether a caught spy gets one final guess.
-- Add a contextual first-round tip near the discussion instructions instead of repeating the full tutorial.
-- Support VoiceOver, Dynamic Type, Reduce Motion, and compact iPhone Duo layouts.
-- Add UI tests for opening, paging, skipping, completing, and reopening the tutorial.
+- [x] State that discussion and voting happen in the group; the app does not collect votes.
+- [x] Document an optional final-guess house rule for a caught spy.
+- [ ] Add a contextual first-round tip near the discussion instructions.
+- [x] Support VoiceOver, Dynamic Type, Reduce Motion, and compact iPhone Duo layouts.
+- [x] Add UI tests for opening, paging, skipping, completing, and reopening the tutorial.
 
 Acceptance criteria:
 
